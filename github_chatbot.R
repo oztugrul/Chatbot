@@ -1,4 +1,4 @@
-#training credits questions
+
 #remove special names and daily conversation words with no distinctive property in differentiation of sprecific questions.
 #answer irrelevant questions in a proper way.
 
@@ -737,7 +737,7 @@ mean(ifelse(as.numeric(as.character(model_call_result_train_m))==x_test_m$Call.S
 mean(ifelse(as.numeric(as.character(model_call_result_svm_m))==x_test_m$Call.Solutions, 1, 0))
 
 
-#UDPIPE UYGULAMA SON
+#UDPIPE UYGULAMA
 
 
 
