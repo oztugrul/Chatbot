@@ -23,9 +23,9 @@ to.plain <- function(s) {
   
   # 1 character substitutions
   
-  old1 <- c("ÇÐÞÝÖÜI")
+  old1 <- c("Ã‡ÄžÅžÃ–ÃœÄ°")
   
-  new1 <- c("çðþiöüý")
+  new1 <- c("Ã§ÄŸÅŸÃ¶Ã¼i")
   
   s1 <- chartr(old1, new1, s)
   s1
@@ -126,7 +126,7 @@ training_set_call$Call.Solution <- as.factor(training_set_call$Call.Solution)
 
 library(caret)
 
-#trainControl fonksiyonunda classProbs=TRUE yapýlarak sýnýf olasýlýklarý verilebilir.
+#trainControl fonksiyonunda classProbs=TRUE yapÃ½larak sÃ½nÃ½f olasÃ½lÃ½klarÃ½ verilebilir.
 
 ctrl <- trainControl(method = "repeatedcv", 
                      number = 5, 
@@ -315,7 +315,7 @@ library(rapportools)
 
 answer<-function(callText){
   if(is.empty(callText)==TRUE){
-    return(c("Lütfen Sorunuzu Yazýnýz"))}
+    return(c("LÃ¼tfen Sorunuzu YazÃ½nÃ½z"))}
   else if((is.empty(callText)==FALSE)){
     callTextNum <- write(callText)
     for(i in 1:41){
@@ -332,10 +332,10 @@ answer<-function(callText){
 #library(shiny)
 
 #shinyUI(fluidPage(
-# titlePanel("Yardým Menüsü"),
+# titlePanel("YardÃ½m MenÃ¼sÃ¼"),
 #  sidebarLayout(
 #    sidebarPanel(
-#      textInput("test_review_data","Lütfen Sorunuzu Yazýnýz.",value = " "),      
+#      textInput("test_review_data","LÃ¼tfen Sorunuzu YazÃ½nÃ½z.",value = " "),      
 #      submitButton("Submit")
       
 #    ),
