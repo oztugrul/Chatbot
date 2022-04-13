@@ -518,9 +518,9 @@ to.plain <- function(s) {
   
   # 1 character substitutions
   
-  old1 <- c("ÇÐÞÝÖÜI")
+  old1 <- c("ÇĞŞÖÜİ")
   
-  new1 <- c("çðþiöüý")
+  new1 <- c("çğşöüi")
   
   s1 <- chartr(old1, new1, s)
   s1
