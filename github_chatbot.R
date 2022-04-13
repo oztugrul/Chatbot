@@ -42,17 +42,17 @@ data$Call<-gsub('[[:punct:] ]+',' ',data$Call)
 
 data$Call<-gsub(c("'")," ",data$Call)
 
-data$Call<-gsub(c("”")," ",data$Call)
+data$Call<-gsub(c("â€")," ",data$Call)
 
-data$Call<-gsub(c("“")," ",data$Call)
+data$Call<-gsub(c("â€œ")," ",data$Call)
 
-data$Call<-gsub(c("‘’")," ",data$Call)
+data$Call<-gsub(c("â€˜â€™")," ",data$Call)
 
-data$Call<-gsub(c("’’")," ",data$Call)
+data$Call<-gsub(c("â€™â€™")," ",data$Call)
 
-data$Call<-gsub(c("’")," ",data$Call)
+data$Call<-gsub(c("â€™")," ",data$Call)
 
-data$Call<-gsub(c("‘")," ",data$Call)
+data$Call<-gsub(c("â€˜")," ",data$Call)
 
 
 #turkce karakter donusumu
@@ -61,9 +61,9 @@ to.plain <- function(s) {
   
   # 1 character substitutions
   
-  old1 <- c("ÇÐÞÝÖÜI")
+  old1 <- c("Ã‡ÄžÅžÃ–ÃœÄ°")
   
-  new1 <- c("çðþiöüý")
+  new1 <- c("Ã§ÄŸÅŸÃ¶Ã¼i")
   
   s1 <- chartr(old1, new1, s)
   s1
@@ -81,9 +81,9 @@ Sys.setenv(DICPATH = "D:/")
 dict <- dictionary('tr-TR')
 
 
-wrong<-c(" kulanýlamýyor ")
+wrong<-c(" kulanÄ±lamÄ±yor ")
 
-right<-c(" kullanýlamýyor ")
+right<-c(" kullanÄ±lamÄ±yor ")
 
 look<-data.frame(cbind(wrong,right))
 
@@ -111,7 +111,7 @@ data$Call<-mgsub(paste0(b,as.character(data$Call),b),as.character(look2[,1]),as.
 
 data$Call<-factor(data$Call)
 
-words_added<-c("gönderilememektedir")
+words_added<-c("gÃ¶nderilememektedir")
 mydict<-dictionary(lang = "tr-TR", affix = NULL, add_words = words_added,cache = TRUE)
 
 
@@ -310,12 +310,12 @@ library(ngram)
 data_prep<-function(test_review_data){
   test_review_data<-gsub('[[:punct:] ]+',' ',test_review_data)
   test_review_data<-gsub(c("'")," ",test_review_data)
-  test_review_data<-gsub(c("”")," ",test_review_data)
-  test_review_data<-gsub(c("“")," ",test_review_data)
-  test_review_data<-gsub(c("‘’")," ",test_review_data)
-  test_review_data<-gsub(c("’’")," ",test_review_data)
-  test_review_data<-gsub(c("’")," ",test_review_data)
-  test_review_data<-gsub(c("‘")," ",test_review_data)
+  test_review_data<-gsub(c("â€")," ",test_review_data)
+  test_review_data<-gsub(c("â€œ")," ",test_review_data)
+  test_review_data<-gsub(c("â€˜â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€™â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€˜")," ",test_review_data)
   test_review_data<-to.plain(test_review_data)
   test_review_data<-tolower(test_review_data)
   test_review_data<-removeNumbers(test_review_data)
@@ -447,7 +447,7 @@ answer<-function(tdm_matrix,model_result_train,model_result_svm){
   }
   else if((callTextNum_train==callTextNum_svm)&&(probability_svm)<=0.25){
     callTextNum=callTextNum_train
-    return(paste(c("Bir düþüneyim :) Sorunuzun yanýtý þu olabilir mi:" ),toString(data2$Cevap[which(callTextNum==data2$Cevap.Kodu)]),sep=" "))
+    return(paste(c("Bir dÃ¼Ã¾Ã¼neyim :) Sorunuzun yanÃ½tÃ½ Ã¾u olabilir mi:" ),toString(data2$Cevap[which(callTextNum==data2$Cevap.Kodu)]),sep=" "))
   }
   else if(((probability_svm-probability_train)>0.62)&&(1-((1-probability_train)*(1-probability_svm)))>0.27||((1-((1-probability_train)*(1-probability_svm)))>0.27&&(probability_train<0.025))){
     callTextNum=callTextNum_svm
@@ -457,7 +457,7 @@ answer<-function(tdm_matrix,model_result_train,model_result_svm){
     return(toString(data2$Cevap[which(callTextNum==data2$Cevap.Kodu)]))
   }
   else{
-    return(c("Sorunuzu biraz daha detaylý yazabilir misiniz?"))
+    return(c("Sorunuzu biraz daha detaylÃ½ yazabilir misiniz?"))
   }
   
 }
@@ -508,9 +508,9 @@ data_m$Call<-gsub('[[:punct:] ]+',' ',data_m$Call)
 
 data_m$Call<-gsub(c("'")," ",data_m$Call)
 
-data_m$Call<-gsub(c("”")," ",data_m$Call)
+data_m$Call<-gsub(c("â€")," ",data_m$Call)
 
-data_m$Call<-gsub(c("“")," ",data_m$Call)
+data_m$Call<-gsub(c("â€œ")," ",data_m$Call)
 
 #turkce karakter donusumu
 
@@ -518,9 +518,9 @@ to.plain <- function(s) {
   
   # 1 character substitutions
   
-  old1 <- c("ÇÐÞÝÖÜI")
+  old1 <- c("Ã‡ÃÃžÃÃ–ÃœI")
   
-  new1 <- c("çðþiöüý")
+  new1 <- c("Ã§Ã°Ã¾iÃ¶Ã¼Ã½")
   
   s1 <- chartr(old1, new1, s)
   s1
@@ -539,9 +539,9 @@ data_m$Call<-removeNumbers(as.character(data_m$Call))
 
 library(textclean)
 
-wrong_m<-c(" doðumgünü ")
+wrong_m<-c(" doÃ°umgÃ¼nÃ¼ ")
 
-right_m<-c(" doðum günü ")
+right_m<-c(" doÃ°um gÃ¼nÃ¼ ")
 
 
 look_m<-data.frame(cbind(wrong_m,right_m))
@@ -752,12 +752,12 @@ data_prep_m<-function(test_review_data){
   
   test_review_data<-gsub('[[:punct:] ]+',' ',test_review_data)
   test_review_data<-gsub(c("'")," ",test_review_data)
-  test_review_data<-gsub(c("”")," ",test_review_data)
-  test_review_data<-gsub(c("“")," ",test_review_data)
-  test_review_data<-gsub(c("‘’")," ",test_review_data)
-  test_review_data<-gsub(c("’’")," ",test_review_data)
-  test_review_data<-gsub(c("’")," ",test_review_data)
-  test_review_data<-gsub(c("‘")," ",test_review_data)
+  test_review_data<-gsub(c("â€")," ",test_review_data)
+  test_review_data<-gsub(c("â€œ")," ",test_review_data)
+  test_review_data<-gsub(c("â€˜â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€™â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€™")," ",test_review_data)
+  test_review_data<-gsub(c("â€˜")," ",test_review_data)
   test_review_data<-to.plain(test_review_data)
   test_review_data<-tolower(test_review_data)
   test_review_data<-removeNumbers(test_review_data)
@@ -876,7 +876,7 @@ answer_m<-function(tdm_matrix_m,model_result_train_m,model_result_svm_m){
   }
   else if((callTextNum_train==callTextNum_svm)&&(1-(1-probability_train)*(1-probability_svm))<=0.25){
     callTextNum=callTextNum_train
-    return(paste(c("Bir düþüneyim :) Sorunuzun yanýtý þu olabilir mi:" ),toString(data2_m$Cevap[which(callTextNum==data2_m$Cevap.Kodu)]),sep=" "))
+    return(paste(c("Bir dÃ¼Ã¾Ã¼neyim :) Sorunuzun yanÃ½tÃ½ Ã¾u olabilir mi:" ),toString(data2_m$Cevap[which(callTextNum==data2_m$Cevap.Kodu)]),sep=" "))
   }
   else if(((probability_svm-probability_train)>0.30)&&(1-((1-probability_train)*(1-probability_svm)))>0.25){
     callTextNum=callTextNum_svm
@@ -887,7 +887,7 @@ answer_m<-function(tdm_matrix_m,model_result_train_m,model_result_svm_m){
   }
   
   else{
-    return(c("Sorunuzu biraz daha detaylý yazabilir misiniz?"))
+    return(c("Sorunuzu biraz daha detaylÃ½ yazabilir misiniz?"))
   }
   
 }
@@ -901,7 +901,7 @@ answer_choose<-function(callText){
   callText<-to.plain(callText)
   callText<-tolower(callText)
   if(is.empty(callText)==TRUE){
-    return(c("Lütfen Sorunuzu Yazýnýz."))}
+    return(c("LÃ¼tfen Sorunuzu YazÃ½nÃ½z."))}
   else {
     tdm_matrix_m<-data_prep_m(callText)
     tdm_matrix<-data_prep(callText)
@@ -913,7 +913,7 @@ answer_choose<-function(callText){
     probability_svm<-prob_svm(tdm_matrix,predict_svm)
     answerk<-answer(tdm_matrix,predict_train,predict_svm)
     answerm<-answer_m(tdm_matrix_m,predict_train_m,predict_svm_m)
-    random_answer<-c(rep(c("Ne desem yalan olur :)"),10),rep(c("Üzgünüm, her konuda cevap veremiyorum"),10),rep(c("Maalesef bu konuda yardýmcý olamýyorum"),10),rep(c("Þimdilik sadece belirli konularda yardýmcý olabiliyorum."),10),rep(c("Bu konuda eðitilmedim :)"),10),rep(c("Bu konuda bir fikrim yok ama öðreniyorum :)"),10))
+    random_answer<-c(rep(c("Ne desem yalan olur :)"),10),rep(c("ÃœzgÃ¼nÃ¼m, her konuda cevap veremiyorum"),10),rep(c("Maalesef bu konuda yardÃ½mcÃ½ olamÃ½yorum"),10),rep(c("Ãžimdilik sadece belirli konularda yardÃ½mcÃ½ olabiliyorum."),10),rep(c("Bu konuda eÃ°itilmedim :)"),10),rep(c("Bu konuda bir fikrim yok ama Ã¶Ã°reniyorum :)"),10))
     if(answerk==c("irrelevant")&answerm==c("irrelevant")){return(sample(random_answer,1))}
     else if(answerm!=c("irrelevant")&answerk==c("irrelevant")){return(answerm)}
     else if(answerm==c("irrelevant")&answerk!=c("irrelevant")){return(answerk)}
